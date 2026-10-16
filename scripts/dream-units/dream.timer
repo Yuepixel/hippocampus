@@ -1,0 +1,12 @@
+[Unit]
+Description=Run the dream job daily at 04:00 (Asia/Shanghai)
+Documentation=file:/opt/hippocampus/dream/README.md
+
+[Timer]
+OnCalendar=*-*-* 04:00:00
+Persistent=true
+AccuracySec=1min
+Unit=dream.service
+
+[Install]
+WantedBy=timers.target

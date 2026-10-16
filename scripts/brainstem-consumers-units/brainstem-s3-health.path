@@ -1,0 +1,9 @@
+[Unit]
+Description=Watch brainstem S3 health snapshot -> write health report
+
+[Path]
+PathExists=/opt/hippocampus/brainstem/signals/s3/current.json
+Unit=brainstem-health.service
+
+[Install]
+WantedBy=paths.target

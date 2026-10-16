@@ -1,0 +1,13 @@
+[Unit]
+Description=Dream job (Hippocampus nightly memory consolidation, stage 4c-3 apply)
+Documentation=file:/opt/hippocampus/dream/README.md
+After=dream-engine-tunnel.service
+Wants=dream-engine-tunnel.service
+
+[Service]
+Type=oneshot
+User=user
+Environment=HOME=/home/user
+Nice=10
+ExecStart=/usr/bin/python3 /opt/hippocampus/dream/dream.py --mode apply --repo /opt/hippocampus/git-memory --engine http://127.0.0.1:18888/v1 --out /opt/hippocampus/dream/reports --log /opt/hippocampus/dream/logs
+TimeoutStartSec=2h

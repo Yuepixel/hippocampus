@@ -1,0 +1,10 @@
+[Unit]
+Description=Hippocampus memory pool consolidation (short-term -> long-term)
+After=hippo-mem0.service dream.service
+Wants=hippo-mem0.service
+
+[Service]
+Type=oneshot
+ExecStart=/opt/hippocampus/server/scripts/pool-consolidate.sh 20
+TimeoutStartSec=900
+Nice=10

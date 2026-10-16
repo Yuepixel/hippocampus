@@ -1,0 +1,10 @@
+[Unit]
+Description=Consume brainstem S3/S4 signals -> write Hippocampus health report
+Documentation=file:/opt/hippocampus/brainstem-consumers/README.md
+After=brainstem.service
+
+[Service]
+Type=oneshot
+User=user
+Environment=HOME=/home/user
+ExecStart=/usr/bin/python3 /opt/hippocampus/brainstem-consumers/health_report.py --root /opt/hippocampus/brainstem --out /opt/hippocampus/brainstem-consumers/reports --log /opt/hippocampus/brainstem-consumers/logs/consumer-health.log

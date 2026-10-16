@@ -1,0 +1,63 @@
+{
+  "userId": "demo",
+  "topK": 5,
+  "threshold": 0.55,
+  "queryMaxChars": 2000,
+  "rerank": true,
+  "rerankEndpoint": "http://127.0.0.1:8086",
+  "rerankApiKey": "",
+  "rerankModel": "bge-reranker-v2-m3",
+  "rerankTopN": 15,
+  "rerankTimeoutMs": 30000,
+  "rerankThreshold": 0.3,
+  "recencyWeight": 0.15,
+  "recencyHalfLifeDays": 14,
+  "lexical": {
+    "enabled": false,
+    "dbPath": "/opt/hippocampus/data/lexical/lexical.db",
+    "denseTopK": 20,
+    "lexTopK": 20,
+    "rrfK": 60,
+    "autoBuildMissing": true
+  },
+  "supersede": {
+    "enabled": false,
+    "embedEndpoint": "http://127.0.0.1:8084",
+    "embedModel": "Qwen3-Embedding-0.6B",
+    "embedTimeoutMs": 3000,
+    "embedMaxChars": 500,
+    "simThreshold": 0.85,
+    "minAgeGapDays": 7,
+    "penalty": 0.5
+  },
+  "pools": {
+    "enabled": true,
+    "shortQuota": 2,
+    "shortThreshold": 0.35,
+    "shortTtlHours": 72,
+    "longTtlHours": 168,
+    "longRelWindow": 0.20,
+    "longMinScore": 0.30,
+    "longTypes": ["decision", "rule", "fix", "preference", "config"],
+    "shortSrcs": ["gateway"],
+    "candidateFactor": 4
+  },
+  "consolidate": {
+    "enabled": true,
+    "maxEntries": 20,
+    "maxChars": 6000,
+    "maxCalls": 8,
+    "endpoint": "http://127.0.0.1:18888/v1",
+    "model": "GLM-5.3-Flash-EXL3",
+    "timeoutMs": 120000
+  },
+  "bearerToken": "<generate-a-random-token-hex>",
+  "rememberAgent": "gateway",
+  "gitMemory": {
+    "enabled": true,
+    "repo": "<absolute-path-to-git-memory-repo>",
+    "gitBin": "git",
+    "defaultFile": "MEMORY.md",
+    "commitPrefix": "memory"
+  }
+}

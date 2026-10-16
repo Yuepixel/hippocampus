@@ -1,0 +1,13 @@
+[Unit]
+Description=Hippocampus Qdrant vector store (:6333)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/opt/qdrant --config-path /opt/hippocampus/qdrant-config.yaml
+WorkingDirectory=/opt/hippocampus
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

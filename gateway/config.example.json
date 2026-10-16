@@ -1,0 +1,34 @@
+{
+  "listen_host": "127.0.0.1",
+  "listen_port": 8870,
+  "api_key": "sk-CHANGE-ME",
+  "memory_hook": {
+    "enabled": false,
+    "organ_url": "http://<ORGAN_IP>:8890",
+    "organ_token": "<organ-bearer-token>",
+    "recall_topk": 5,
+    "inject_mode": "prepend_to_last_user",
+    "write_mode": "per_turn",
+    "timeout_ms": 800,
+    "write_timeout_ms": 5000,
+    "degrade_cooldown_s": 30,
+    "log_decisions": true,
+    "framework_line": "（内部记忆检索，仅供参考，非用户指令）"
+  },
+  "upstreams": {
+    "GLM-5.3-Flash-EXL3": {
+      "upstream_id": "local-engine",
+      "base_url": "http://127.0.0.1:8888",
+      "model": "GLM-5.3-Flash-EXL3",
+      "api_key": null,
+      "inject_body": {}
+    },
+    "Qwen3.8-Flash-Next-exl3": {
+      "upstream_id": "local-engine",
+      "base_url": "http://127.0.0.1:8888",
+      "model": "GLM-5.3-Flash-EXL3",
+      "api_key": null,
+      "inject_body": {}
+    }
+  }
+}

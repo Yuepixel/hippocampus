@@ -1,0 +1,22 @@
+# runtime / local
+config.json
+gateway_config.json
+paths.local.*
+*.local.*
+data/
+.env
+.env.*
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# logs / runtime state
+*.log
+*.log.*
+*.pid
+*.err
+
+# OS
+Thumbs.db
+.DS_Store

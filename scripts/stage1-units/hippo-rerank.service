@@ -1,0 +1,13 @@
+[Unit]
+Description=Hippocampus rerank llama-server (:8086)
+After=network-online.target hippo-qdrant.service
+Wants=network-online.target
+
+[Service]
+ExecStart=/opt/hippocampus/bin/llama-server -m /opt/hippocampus/models/bge-reranker-v2-m3-Q6_K.gguf --rerank -c 8192 -b 8192 -ub 8192 --cache-ram 256 --host 0.0.0.0 --port 8086 --no-webui
+WorkingDirectory=/opt/hippocampus
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

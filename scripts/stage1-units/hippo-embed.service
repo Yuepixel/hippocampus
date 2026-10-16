@@ -1,0 +1,13 @@
+[Unit]
+Description=Hippocampus embeddings llama-server (:8084)
+After=network-online.target hippo-qdrant.service
+Wants=network-online.target
+
+[Service]
+ExecStart=/opt/hippocampus/bin/llama-server -m /opt/hippocampus/models/Qwen3-Embedding-0.6B-Q8_0.gguf --embedding --pooling last -c 8192 -np 2 -b 512 -ub 512 -ctk q8_0 -ctv q8_0 --cache-ram 256 --alias Qwen3-Embedding-0.6B --host 0.0.0.0 --port 8084 --no-webui
+WorkingDirectory=/opt/hippocampus
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

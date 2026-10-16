@@ -1,0 +1,17 @@
+[Unit]
+Description=Hippocampus brainstem (fourth organ) - mechanical signal publisher
+Documentation=file:/opt/hippocampus/brainstem/README.md
+After=network-online.target dream-engine-tunnel.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=user
+Environment=HOME=/home/user
+Nice=5
+ExecStart=/usr/bin/python3 /opt/hippocampus/brainstem/brainstem.py --root /opt/hippocampus/brainstem --tick 30 --s1 04:00 --idle-min 10 --idle-load 2.0 --s3-interval 1800
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

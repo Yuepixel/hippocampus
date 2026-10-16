@@ -1,0 +1,14 @@
+[Unit]
+Description=Hippocampus mem0 REST (:8890)
+After=network-online.target hippo-embed.service
+Wants=network-online.target hippo-embed.service
+
+[Service]
+WorkingDirectory=/opt/hippocampus/server
+EnvironmentFile=/opt/hippocampus/server/.env
+ExecStart=/opt/hippocampus/venv/bin/python -m uvicorn main:app --host 0.0.0.0 --port 8890
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

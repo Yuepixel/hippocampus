@@ -1,0 +1,11 @@
+[Unit]
+Description=Consume brainstem S2 (idle) signal -> local LLM info-collection report
+Documentation=file:/opt/hippocampus/brainstem-consumers/README.md
+After=brainstem.service dream-engine-tunnel.service
+
+[Service]
+Type=oneshot
+User=user
+Environment=HOME=/home/user
+TimeoutStartSec=240
+ExecStart=/usr/bin/python3 /opt/hippocampus/brainstem-consumers/collect_report.py --root /opt/hippocampus/brainstem --out /opt/hippocampus/brainstem-consumers/reports --gm /opt/hippocampus/git-memory --state /opt/hippocampus/brainstem-consumers/state --log /opt/hippocampus/brainstem-consumers/logs/consumer-collect.log --base-url http://127.0.0.1:18888/v1

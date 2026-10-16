@@ -1,0 +1,6 @@
+[Unit]
+Description=Consume brainstem S1 signal -> start Hippocampus dream job
+
+[Service]
+Type=oneshot
+ExecStart=/opt/hippocampus/brainstem/consume-s1-dream.sh

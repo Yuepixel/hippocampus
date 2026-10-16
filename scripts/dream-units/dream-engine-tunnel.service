@@ -1,0 +1,15 @@
+[Unit]
+Description=Dream engine tunnel (102 -> 101 engine 127.0.0.1:8888)
+Documentation=file:/opt/hippocampus/dream/README.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=user
+Environment=HOME=/home/user
+ExecStart=/usr/bin/ssh -N -o BatchMode=yes -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -o ConnectTimeout=10 -o StrictHostKeyChecking=accept-new -i /home/user/.ssh/id_ed25519_dream -L 127.0.0.1:18888:127.0.0.1:8888 user@<HEAD_IP>
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

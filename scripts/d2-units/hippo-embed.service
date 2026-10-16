@@ -1,0 +1,16 @@
+[Unit]
+Description=Hippocampus embeddings (llama.cpp CUDA13 container, :8084)
+After=network-online.target docker.service
+Wants=network-online.target
+Requires=docker.service
+
+[Service]
+ExecStartPre=-/usr/bin/docker rm -f hippo-embed
+ExecStart=/usr/bin/docker run --rm --name hippo-embed --no-healthcheck --gpus all -p 8084:8084 -v /opt/hippocampus/models:/models ghcr.nju.edu.cn/ggml-org/llama.cpp:server-cuda13 -m /models/Qwen3-Embedding-0.6B-Q8_0.gguf --embedding --pooling last -c 8192 -np 2 -b 512 -ub 512 -ctk q8_0 -ctv q8_0 --cache-ram 256 --alias Qwen3-Embedding-0.6B --host 0.0.0.0 --port 8084 --no-webui
+ExecStop=/usr/bin/docker stop hippo-embed
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=180
+
+[Install]
+WantedBy=multi-user.target

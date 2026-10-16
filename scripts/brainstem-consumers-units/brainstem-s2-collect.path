@@ -1,0 +1,9 @@
+[Unit]
+Description=Watch brainstem S2 idle signal -> run info-collection consumer
+
+[Path]
+PathExists=/opt/hippocampus/brainstem/signals/s2/current.json
+Unit=brainstem-collect.service
+
+[Install]
+WantedBy=paths.target

@@ -1,0 +1,9 @@
+[Unit]
+Description=Watch brainstem S4 liveness transition -> write health report
+
+[Path]
+PathExists=/opt/hippocampus/brainstem/signals/s4/current.json
+Unit=brainstem-health.service
+
+[Install]
+WantedBy=paths.target

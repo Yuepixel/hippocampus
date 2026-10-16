@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily memory pool consolidation (04:30 Asia/Shanghai)
+Requires=pool-consolidate.service
+
+[Timer]
+OnCalendar=*-*-* 04:30:00
+Persistent=true
+Unit=pool-consolidate.service
+
+[Install]
+WantedBy=timers.target

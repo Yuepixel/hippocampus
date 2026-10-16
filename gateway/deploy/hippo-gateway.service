@@ -1,0 +1,16 @@
+[Unit]
+Description=Hippocampus LLM pass-through gateway (Stage A1)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=user
+WorkingDirectory=/opt/hippocampus-gateway
+ExecStart=/opt/hippocampus-gateway/venv/bin/uvicorn app:app --host 127.0.0.1 --port 8870 --workers 1 --log-level info
+Restart=on-failure
+RestartSec=3
+Environment=HIPPO_GATEWAY_CONFIG=/opt/hippocampus-gateway/config.json
+
+[Install]
+WantedBy=multi-user.target

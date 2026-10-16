@@ -1,0 +1,9 @@
+[Unit]
+Description=Watch brainstem S1 signal -> trigger Hippocampus dream job
+
+[Path]
+PathExists=/opt/hippocampus/brainstem/signals/s1/current.json
+Unit=brainstem-s1-dream.service
+
+[Install]
+WantedBy=paths.target
